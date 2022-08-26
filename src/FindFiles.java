@@ -3,20 +3,18 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 import javax.print.attribute.standard.NumberOfDocuments;
 
 public class FindFiles {
-    private int numberOfFiles;
     private ArrayList<File> filesList = new ArrayList<>();
     private File foundFile;
-    private String searchWord = "rightx";
 
     private void findFiles(File file) {
         if (file.isFile()) {
             System.out.println(file.getAbsolutePath());
             filesList.add(file);
-            numberOfFiles++;
         } else {
             File[] files = file.listFiles();
             for (File file1 : files) {
@@ -36,13 +34,22 @@ public class FindFiles {
                 foundFile = file;
             }
 
+            bufferedReader.close();
+
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
     public static void main(String[] args) {
+
         FindFiles findFiles = new FindFiles();
+
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Please enter a searchword: ");
+        String searchWord = scanner.nextLine();
+        scanner.close();
+
         String userDirectory = new File("").getAbsolutePath();
         File file = new File(userDirectory.concat("//bin"));
 
@@ -50,14 +57,14 @@ public class FindFiles {
 
         for (File currentFile : findFiles.filesList) {
 
-            findFiles.findEnteredWord(currentFile, findFiles.searchWord);
+            findFiles.findEnteredWord(currentFile, searchWord);
         }
 
         if (findFiles.foundFile == null) {
             System.out.println("Found no file");
         } else if (findFiles.foundFile.length() > 0) {
-            System.out.println("Search word \"" + findFiles.searchWord + "\" was found in:");
-            System.out.println(file);
+            System.out.println("Search word \"" + searchWord + "\" was found in:");
+            System.out.println(findFiles.foundFile);
         } else {
             System.out.println("Found no file");
         }
