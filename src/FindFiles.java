@@ -37,7 +37,7 @@ public class FindFiles {
 
             bufferedReader.close();
         } catch (FileNotFoundException ex) {
-            System.out.println(ex);
+            System.err.println(ex);
         } catch (IOException e) {
             e.printStackTrace();
         }
