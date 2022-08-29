@@ -1,5 +1,6 @@
 import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -13,7 +14,7 @@ public class FindFiles {
 
     private void findFiles(File file) {
         if (file.isFile()) {
-            System.out.println(file.getAbsolutePath());
+            // System.out.println(file.getAbsolutePath());
             filesList.add(file);
         } else {
             File[] files = file.listFiles();
@@ -35,7 +36,8 @@ public class FindFiles {
             }
 
             bufferedReader.close();
-
+        } catch (FileNotFoundException ex) {
+            System.out.println(ex);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -61,12 +63,12 @@ public class FindFiles {
         }
 
         if (findFiles.foundFile == null) {
-            System.out.println("Found no file");
+            System.out.println("Found no file with matching word");
         } else if (findFiles.foundFile.length() > 0) {
             System.out.println("Search word \"" + searchWord + "\" was found in:");
             System.out.println(findFiles.foundFile);
         } else {
-            System.out.println("Found no file");
+            System.out.println("Found no file with matching word");
         }
     }
 }
