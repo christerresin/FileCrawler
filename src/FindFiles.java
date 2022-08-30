@@ -62,13 +62,20 @@ public class FindFiles {
             findFiles.findEnteredWord(currentFile, searchWord);
         }
 
-        if (findFiles.foundFile == null) {
-            System.out.println("Found no file with matching word");
-        } else if (findFiles.foundFile.length() > 0) {
-            System.out.println("Search word \"" + searchWord + "\" was found in:");
-            System.out.println(findFiles.foundFile);
-        } else {
-            System.out.println("Found no file with matching word");
+        try {
+            if (findFiles.foundFile == null) {
+                throw new Exception("Found no file with matching word");
+            } else if (findFiles.foundFile.length() > 0) {
+                System.out.println("Search word \"" + searchWord + "\" was found in:");
+                System.out.println(findFiles.foundFile);
+            } else {
+                throw new Exception("Found no file with matching word");
+            }
+
+        } catch (Exception e) {
+            System.out.println(e);
+            System.exit(0);
         }
+
     }
 }
