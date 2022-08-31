@@ -8,7 +8,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class FindFiles {
+public class FileCrawler {
     private ArrayList<File> filesList = new ArrayList<>();
     private File foundFile;
 
@@ -45,7 +45,7 @@ public class FindFiles {
 
     public static void main(String[] args) {
 
-        FindFiles findFiles = new FindFiles();
+        FileCrawler findFiles = new FileCrawler();
 
         Scanner scanner = new Scanner(System.in);
         System.out.println("Please enter a searchword: (*hint* type in crawler)");
