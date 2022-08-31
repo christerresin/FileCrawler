@@ -1,3 +1,5 @@
+package edu.lernia;
+
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -5,8 +7,6 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
-
-import javax.print.attribute.standard.NumberOfDocuments;
 
 public class FindFiles {
     private ArrayList<File> filesList = new ArrayList<>();
@@ -48,7 +48,7 @@ public class FindFiles {
         FindFiles findFiles = new FindFiles();
 
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Please enter a searchword: ");
+        System.out.println("Please enter a searchword: (*hint* type in crawler)");
         String searchWord = scanner.nextLine();
         scanner.close();
 
